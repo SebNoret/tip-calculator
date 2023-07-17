@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <style></style>
+    <header class="header">
+      <h1>Spli<br />tter</h1>
+    </header>
+    <main
+      class="main"
+      x-data=" {
+     
+       bill: null,
+       nbrOfPeople: null,
+       tipPercent: null,
+       customOption: false,
+        
+       reset() {
+         this.bill = null;
+         this.nbrOfPeople = null;
+         this.tipPercent = null;
+         this.customOption = false;
+       },
+
+       tipAmountPerPerson() {
+        if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
+          return '0.00';
+        }
+
+          const tipAmout = (Number(this.bill) * Number(this.tipPercent)/100) / Number(this.nbrOfPeople);
+          console.log(tipAmout);
+           return isFinite(tipAmout) ?  tipAmout.toFixed(2) : '0.00' ;
+        
+       },
+
+       totalPerPerson() {
+        if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
+          return '0.00';
+        }
+
+          const total = (Number(this.bill) + Number(this.tipAmountPerPerson())) / Number(this.nbrOfPeople);
+          return isFinite(total) ?   total.toFixed(2) : '0.00';
+
+       }
+       
+    }"
+    >
+      <form>
+        <div class="form-control">
+          <label for="bill" class="label">Bill</label>
+          <div class="form-input">
+            <img
+              src="./images/icon-dollar.svg"
+              class="icon"
+              aria-hidden="true"
+            />
+            <input
+              type="number"
+              name="bill"
+              id="bill"
+              x-model="bill"
+              placeholder="0"
+            />
+          </div>
+        </div>
+        <fieldset>
+          <legend class="label">Select Tip %</legend>
+          <div class="radio-container">
+            <label
+              class="radio-label"
+              x-bind:class="{'radio-checked': customOption===false && tipPercent === '5'}"
+            >
+              <input
+                type="radio"
+                name="option"
+                value="5"
+                class="radio-button"
+                x-model="tipPercent"
+              />
+              5%
+            </label>
+            <label
+              class="radio-label"
+              x-bind:class="{'radio-checked': customOption===false && tipPercent=== '10'}"
+            >
+              <input
+                type="radio"
+                name="option"
+                value="10"
+                class="radio-button"
+                x-model="tipPercent"
+              />
+              10%
+            </label>
+            <label
+              class="radio-label"
+              x-bind:class="{'radio-checked': customOption===false &&  tipPercent === '15'}"
+            >
+              <input
+                type="radio"
+                name="option"
+                value="15"
+                class="radio-button"
+                x-model="tipPercent"
+              />
+              15%
+            </label>
+            <label
+              class="radio-label"
+              x-bind:class="{'radio-checked': customOption===false && tipPercent === '25'}"
+            >
+              <input
+                type="radio"
+                name="option"
+                value="25"
+                class="radio-button"
+                x-model="tipPercent"
+              />
+              25%
+            </label>
+            <label
+              class="radio-label"
+              x-bind:class="{'radio-checked': customOption===false && tipPercent === '50'}"
+            >
+              <input
+                type="radio"
+                name="option"
+                value="50"
+                class="radio-button"
+                x-model="tipPercent"
+              />
+              50%
+            </label>
+            <label class="radio-label radio-custom">
+              <div x-show="!customOption">
+                <input
+                  type="radio"
+                  name="option"
+                  value="custom"
+                  class="radio-button"
+                  x-on:click="customOption = !customOption"
+                />
+                Custom
+              </div>
+              <input
+                x-show="customOption"
+                type="number"
+                name="custom"
+                id="custom"
+                x-model="tipPercent"
+                placeholder="0"
+                class="custom-input"
+              />
+            </label>
+          </div>
+        </fieldset>
+        <div class="form-control custom-option"></div>
+        <div class="form-control">
+          <label for="people" class="label">Number of People</label>
+          <div class="form-input">
+            <img
+              src="./images/icon-person.svg"
+              class="icon"
+              aria-hidden="true"
+            />
+            <input
+              type="number"
+              name="people"
+              id="people"
+              step="1"
+              min="0"
+              x-model="nbrOfPeople"
+              placeholder="0"
+            />
+          </div>
+        </div>
+      </form>
+      <div class="results">
+        <div class="tip-amount">
+          <div>
+            <p class="label">Tip Amount</p>
+            <p class="person">/ person</p>
+          </div>
+          <div>
+            <p class="total-number" x-text="'$'+tipAmountPerPerson()"></p>
+          </div>
+        </div>
+        <div class="total">
+          <div>
+            <p class="label">Total</p>
+            <p class="person">/ person</p>
+          </div>
+          <div>
+            <p class="total-number" x-text="'$'+ totalPerPerson()"></p>
+          </div>
+        </div>
+        <button id="reset" class="button" x-on:click="reset">Reset</button>
+      </div>
+    </main>
+  </body>
+</html>
