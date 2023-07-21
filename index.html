@@ -21,7 +21,7 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <title>Frontend Mentor | Tip calculator app</title>
+    <title>Tip calculator app</title>
   </head>
   <body>
     <style></style>
@@ -44,13 +44,20 @@
          this.customOption = false;
        },
 
+       showErrors() {
+         if ((this.bill !== null && this.tipPercent !== null) && (this.nbrOfPeople === null || this.nbrOfPeople === String(0))) {
+           return true;
+         }
+         return false;
+       },
+
        tipAmountPerPerson() {
         if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
           return '0.00';
         }
 
           const tipAmout = (Number(this.bill) * Number(this.tipPercent)/100) / Number(this.nbrOfPeople);
-          console.log(tipAmout);
+          
            return isFinite(tipAmout) ?  tipAmout.toFixed(2) : '0.00' ;
         
        },
@@ -76,8 +83,11 @@
               class="icon"
               aria-hidden="true"
             />
+
             <input
               type="number"
+              min="0"
+              max="10"
               name="bill"
               id="bill"
               x-model="bill"
@@ -153,19 +163,22 @@
               />
               50%
             </label>
-            <label class="radio-label radio-custom">
-              <div x-show="!customOption">
-                <input
-                  type="radio"
-                  name="option"
-                  value="custom"
-                  class="radio-button"
-                  x-on:click="customOption = !customOption"
-                />
-                Custom
-              </div>
+            <template x-if="!customOption">
+              <label class="radio-label radio-custom">
+                <div class="custom-wrapper">
+                  <input
+                    type="radio"
+                    name="option"
+                    value="custom"
+                    class="radio-button"
+                    x-on:click="customOption = !customOption"
+                  />
+                  Custom
+                </div>
+              </label>
+            </template>
+            <template x-if="customOption">
               <input
-                x-show="customOption"
                 type="number"
                 name="custom"
                 id="custom"
@@ -173,12 +186,17 @@
                 placeholder="0"
                 class="custom-input"
               />
-            </label>
+            </template>
           </div>
         </fieldset>
         <div class="form-control custom-option"></div>
         <div class="form-control">
-          <label for="people" class="label">Number of People</label>
+          <div class="error-container">
+            <label for="people" class="label">Number of People</label>
+
+            <p class="error" x-show="showErrors">Can't be zero</p>
+          </div>
+
           <div class="form-input">
             <img
               src="./images/icon-person.svg"
@@ -192,6 +210,8 @@
               step="1"
               min="0"
               x-model="nbrOfPeople"
+              x-bind:class="{errorOutline: showErrors()}"
+              x-bind:style="showErrors() ? 'outline: 1px solid red' : ''"
               placeholder="0"
             />
           </div>
@@ -199,7 +219,7 @@
       </form>
       <div class="results">
         <div class="tip-amount">
-          <div>
+          <div class="infos-container">
             <p class="label">Tip Amount</p>
             <p class="person">/ person</p>
           </div>
@@ -208,7 +228,7 @@
           </div>
         </div>
         <div class="total">
-          <div>
+          <div class="infos-container">
             <p class="label">Total</p>
             <p class="person">/ person</p>
           </div>

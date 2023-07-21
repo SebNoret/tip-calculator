@@ -1,4 +1,6 @@
-/* Réinitialisation des styles */
+/* CSS with some suggested improvements */
+
+/* Reset styles */
 :root {
   --strong-cyan: hsl(172, 67%, 45%);
   --very-dark-cyan: hsl(183, 100%, 15%);
@@ -8,25 +10,20 @@
   --very-light-grayish-cyan: hsl(189, 41%, 97%);
   --white: hsl(0, 0%, 100%);
 }
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* Styles de base */
+/* Base styles */
 body {
   font-family: "Space Mono", monospace;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
   color: #333;
   background-color: var(--light-grayish-cyan);
 }
+
 input {
   font-family: "Space Mono", monospace;
 }
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -50,41 +47,53 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/*layout*/
+
+/* Layout */
 .header {
   min-height: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .main {
   margin: 0 auto;
   padding: 2rem 1rem;
   background-color: var(--white);
-  /* height: 85vh; */
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-.results {
   border-radius: 20px;
+  box-shadow: 0px 15px 10px 1px rgba(127, 156, 159, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
+
+.results {
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 20px;
+  min-width: 40%;
+}
+
 .form-control {
   margin-bottom: 1.5rem;
 }
+
 .form-control label {
   display: block;
 }
+
 .form-control input,
 legend {
   margin-bottom: 0.5rem;
 }
+
 .form-control input {
   display: block;
   width: 100%;
   padding: 0.5rem 1rem;
   border: none;
   background-color: var(--very-light-grayish-cyan);
-
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   font-size: 1rem;
@@ -94,38 +103,28 @@ legend {
 .form-input {
   display: flex;
   align-items: flex-start;
-  /* align-items: center; */
   position: relative;
 }
+
 .icon {
   background-color: var(--very-light-grayish-cyan);
   position: absolute;
   left: 0.5rem;
   top: 0.15rem;
-
   padding: 0.4rem;
 }
 
 fieldset {
   border: none;
 }
-.results {
-  background-color: var(--very-dark-cyan);
-  color: white;
-  padding: 1.5rem;
-}
-.results .label {
-  color: white;
-}
 
-/* Styles de composants */
+/* Components */
 .button {
   display: inline-block;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
   background-color: var(--strong-cyan);
-
   text-transform: uppercase;
   font-weight: bold;
   color: var(--very-dark-cyan);
@@ -139,25 +138,25 @@ fieldset {
   background-color: #0069d9;
 }
 
-/* typographie */
 .label {
   color: var(--grayish-cyan);
-  /* margin-bottom: 1rem; */
 }
+
 h1 {
   font-size: 1.3rem;
   font-weight: 700;
-
   color: var(--very-dark-cyan);
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.8rem;
 }
+
 .radio-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .radio-button {
   display: none;
 }
@@ -169,12 +168,12 @@ h1 {
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   color: var(--white);
-
   text-align: center;
   background-color: var(--very-dark-cyan);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
 .radio-label:hover {
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
@@ -187,41 +186,23 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 0;
-  /* margin: 0; */
-  /* max-width: 100px; */
 }
 
-/* .custom-input */
 #custom {
   display: inline-block;
   border: none;
   margin: 0;
   border-radius: 0.25rem;
   text-align: end;
-  /* padding-right: 1rem; */
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  /* background-color: var(--very-light-grayish-cyan); */
   width: 45%;
-  /* max-width: 100px; */
-  /* max-width: 100px; */
 }
-.error-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.7rem;
-}
+
 input:focus {
   outline: 1px solid var(--strong-cyan);
 }
-.errorOutline {
-  outline: 1px solid red;
-  border: 1px solid red;
-}
-.error {
-  color: red;
-}
+
 .custom-text {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -239,12 +220,14 @@ input:focus {
   align-items: center;
   margin-bottom: 1rem;
 }
+
 .tip-amount div:has(.total-number):nth-child(2),
 .total div:has(.total-number):nth-child(2) {
   display: flex;
   justify-content: flex-end;
   max-width: 50%;
 }
+
 .person {
   font-size: 0.8rem;
   color: var(--grayish-cyan);
@@ -259,31 +242,21 @@ input:focus {
   max-width: 100%;
 }
 
-/* media queries */
-
-@media screen and (min-width: 389px) {
-  .main {
-    height: 85vh;
-  }
-}
-
+/* Media queries */
 @media screen and (min-width: 539px) {
   .main {
     height: 90vh;
     width: 90vw;
   }
 }
+
 @media screen and (min-width: 768px) {
   .main {
-    display: flex;
     height: 30%;
-
-    justify-content: space-between;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0px 15px 10px 1px rgba(127, 156, 159, 0.2);
-    margin-bottom: 220px;
+    max-height: 400px;
+    width: 80%;
   }
+
   .radio-label {
     width: 30%;
   }
@@ -291,41 +264,29 @@ input:focus {
   #custom {
     width: 30%;
   }
+
   form {
     height: 100%;
     max-width: 50%;
   }
+
   .results {
     min-width: 40%;
-
-    /* justify-content: space-around; */
     padding: 1rem;
   }
+
   .button {
     margin-top: 6rem;
   }
 }
-@media screen and (min-width: 840px) {
-  .main {
-    width: 80%;
-  }
-}
+
 @media screen and (min-width: 1024px) {
-  .main {
-    width: 80%;
-  }
-  .results {
-    width: 50%;
-  }
-}
-@media screen and (min-width: 1200px) {
   .main {
     height: 50%;
     width: 50%;
   }
-}
 
-.radio-checked {
-  background-color: var(--strong-cyan);
-  color: var(--very-dark-cyan);
+  .results {
+    width: 50%;
+  }
 }
