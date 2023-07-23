@@ -24,14 +24,12 @@
     <title>Tip calculator app</title>
   </head>
   <body>
-    <style></style>
     <header class="header">
       <h1>Spli<br />tter</h1>
     </header>
     <main
       class="main"
       x-data=" {
-     
        bill: null,
        nbrOfPeople: null,
        tipPercent: null,
@@ -55,39 +53,51 @@
         if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
           return '0.00';
         }
-
-          const tipAmout = (Number(this.bill) * Number(this.tipPercent)/100) / Number(this.nbrOfPeople);
-          
-           return isFinite(tipAmout) ?  tipAmout.toFixed(2) : '0.00' ;
-        
+         const tipAmout = (Number(this.bill) * Number(this.tipPercent)/100) / Number(this.nbrOfPeople);        
+         return isFinite(tipAmout) ?  tipAmout.toFixed(2) : '0.00' ;
        },
 
        totalPerPerson() {
         if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
           return '0.00';
         }
+        const total = (Number(this.bill) + Number(this.tipAmountPerPerson())) / Number(this.nbrOfPeople);
+        return isFinite(total) ?   total.toFixed(2) : '0.00';
+       },
 
-          const total = (Number(this.bill) + Number(this.tipAmountPerPerson())) / Number(this.nbrOfPeople);
-          return isFinite(total) ?   total.toFixed(2) : '0.00';
-
+       isBillTooHigh() {
+         if (this.bill !== null && Number(this.bill > 999999)){
+          this.bill= null;
+           return true;
+         }
+         return false;
        }
        
     }"
     >
       <form>
         <div class="form-control">
-          <label for="bill" class="label">Bill</label>
+          <div class="error-container">
+            <label for="bill" class="label">Bill</label>
+            <template x-if="isBillTooHigh">
+              <p class="error">Can't be more than 999999 $</p>
+            </template>
+            <p class="error" x-show="isBillTooHigh" x-cloak>
+              Can't be more than 999999 $
+            </p>
+          </div>
           <div class="form-input">
             <img
               src="./images/icon-dollar.svg"
               class="icon"
               aria-hidden="true"
+              alt="icon-dollar"
             />
 
             <input
               type="number"
               min="0"
-              max="10"
+              max="999999"
               name="bill"
               id="bill"
               x-model="bill"
@@ -194,7 +204,7 @@
           <div class="error-container">
             <label for="people" class="label">Number of People</label>
 
-            <p class="error" x-show="showErrors">Can't be zero</p>
+            <p class="error" x-show="showErrors" x-cloak>Can't be zero</p>
           </div>
 
           <div class="form-input">
@@ -202,6 +212,7 @@
               src="./images/icon-person.svg"
               class="icon"
               aria-hidden="true"
+              alt="icon-person"
             />
             <input
               type="number"

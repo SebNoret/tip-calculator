@@ -1,4 +1,6 @@
-/* Réinitialisation des styles */
+[x-cloak] {
+  display: none !important;
+}
 :root {
   --strong-cyan: hsl(172, 67%, 45%);
   --very-dark-cyan: hsl(183, 100%, 15%);
@@ -237,7 +239,10 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+}
+.total {
+  /* margin-bottom: 4.2rem; */
 }
 .tip-amount div:has(.total-number):nth-child(2),
 .total div:has(.total-number):nth-child(2) {
@@ -264,12 +269,13 @@ input:focus {
 @media screen and (min-width: 389px) {
   .main {
     height: 85vh;
+    padding: 2rem;
   }
 }
 
 @media screen and (min-width: 539px) {
   .main {
-    height: 90vh;
+    height: 95vh;
     width: 90vw;
   }
 }
@@ -293,13 +299,13 @@ input:focus {
   }
   form {
     height: 100%;
-    max-width: 50%;
+    width: 50%;
   }
   .results {
-    min-width: 40%;
+    /* width: 40%; */
 
     /* justify-content: space-around; */
-    padding: 1rem;
+    padding: 2rem;
   }
   .button {
     margin-top: 6rem;
@@ -312,16 +318,20 @@ input:focus {
 }
 @media screen and (min-width: 1024px) {
   .main {
-    width: 80%;
+    width: 70%;
   }
   .results {
-    width: 50%;
+    width: 40%;
   }
 }
 @media screen and (min-width: 1200px) {
   .main {
     height: 50%;
-    width: 50%;
+    width: 45%;
+  }
+  .results,
+  .form {
+    width: 45%;
   }
 }
 
