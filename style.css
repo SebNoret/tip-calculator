@@ -134,11 +134,13 @@ fieldset {
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
+  margin-top: 2rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .button:hover,
 .button:active {
-  background-color: #0069d9;
+  background-color: var(--light-grayish-cyan);
 }
 
 /* typographie */
@@ -306,9 +308,14 @@ input:focus {
 
     /* justify-content: space-around; */
     padding: 2rem;
+    position: relative;
   }
   .button {
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
+    position: absolute;
+    bottom: 2.3rem;
+    left: 10%;
+    width: 80%;
   }
 }
 @media screen and (min-width: 840px) {
