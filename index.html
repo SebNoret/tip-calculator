@@ -16,10 +16,6 @@
       href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
       rel="stylesheet"
     />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
 
     <title>Tip calculator app</title>
   </head>
@@ -27,54 +23,7 @@
     <header class="header">
       <h1>Spli<br />tter</h1>
     </header>
-    <main
-      class="main"
-      x-data=" {
-       bill: null,
-       nbrOfPeople: null,
-       tipPercent: null,
-       customOption: false,
-        
-       reset() {
-         this.bill = null;
-         this.nbrOfPeople = null;
-         this.tipPercent = null;
-         this.customOption = false;
-       },
-
-       showErrors() {
-         if ((this.bill !== null && this.tipPercent !== null) && (this.nbrOfPeople === null || this.nbrOfPeople === String(0))) {
-           return true;
-         }
-         return false;
-       },
-
-       tipAmountPerPerson() {
-        if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
-          return '0.00';
-        }
-         const tipAmout = (Number(this.bill) * Number(this.tipPercent)/100) / Number(this.nbrOfPeople);        
-         return isFinite(tipAmout) ?  tipAmout.toFixed(2) : '0.00' ;
-       },
-
-       totalPerPerson() {
-        if (this.bill === null || this.nbrOfPeople === null || this.tipPercent === null) {
-          return '0.00';
-        }
-        const total = (Number(this.bill) + Number(this.tipAmountPerPerson())) / Number(this.nbrOfPeople);
-        return isFinite(total) ?   total.toFixed(2) : '0.00';
-       },
-
-       isBillTooHigh() {
-         if (this.bill !== null && Number(this.bill > 999999)){
-          this.bill= null;
-           return true;
-         }
-         return false;
-       }
-       
-    }"
-    >
+    <main class="main" x-data="app()">
       <form>
         <div class="form-control">
           <div class="error-container">
@@ -250,5 +199,6 @@
         <button id="reset" class="button" x-on:click="reset">Reset</button>
       </div>
     </main>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
