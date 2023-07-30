@@ -4,8 +4,11 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
+const test = "http://localhost:80/tip/";
+const dev = "http://localhost:5173/";
+
 export default defineConfig({
-  base: "http://localhost:80/tip/", // Permet de définir le chemin de base de l'application
+  // base: "http://localhost:80/tip/", // Permet de définir le chemin de base de l'application
 
   plugins: [
     postcss({

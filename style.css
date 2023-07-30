@@ -114,7 +114,7 @@ fieldset {
 .results {
   background-color: var(--very-dark-cyan);
   color: white;
-  padding: 1.5rem;
+  padding: 2rem;
 }
 .results .label {
   color: white;
@@ -225,6 +225,7 @@ input:focus {
 }
 .error {
   color: red;
+  text-align: end;
 }
 .custom-text {
   display: inline-block;
@@ -241,16 +242,15 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   /* margin-bottom: 1rem; */
 }
-.total {
-  /* margin-bottom: 4.2rem; */
-}
+
 .tip-amount div:has(.total-number):nth-child(2),
 .total div:has(.total-number):nth-child(2) {
   display: flex;
   justify-content: flex-end;
-  max-width: 50%;
+  max-width: 100%;
 }
 .person {
   font-size: 0.8rem;
@@ -304,7 +304,10 @@ input:focus {
     width: 50%;
   }
   .results {
+    /* valeur surpprimée; */
     /* width: 40%; */
+    /* valeur ajoutée; */
+    width: 45%;
 
     /* justify-content: space-around; */
     padding: 2rem;
@@ -313,14 +316,16 @@ input:focus {
   .button {
     /* margin-top: 6rem; */
     position: absolute;
-    bottom: 2.3rem;
+    bottom: 1.8rem;
     left: 10%;
     width: 80%;
   }
 }
 @media screen and (min-width: 840px) {
   .main {
-    width: 80%;
+    /* valeur de départ */
+    /* width: 80%; */
+    width: 85%;
   }
 }
 @media screen and (min-width: 1024px) {
