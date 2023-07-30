@@ -4,11 +4,11 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
-const test = "http://localhost:80/tip/";
+const test = "http://localhost:80/dist/";
 const dev = "http://localhost:5173/";
 
 export default defineConfig({
-  // base: "http://localhost:80/tip/", // Permet de définir le chemin de base de l'application
+  // base: test, // Permet de définir le chemin de base de l'application
 
   plugins: [
     postcss({
@@ -25,4 +25,9 @@ export default defineConfig({
       removeComments: true, // Supprime les commentaires
     }),
   ],
+  build: {
+    sourcemap: true,
+
+    // chunkSizeWarningLimit: 1000,
+  },
 });

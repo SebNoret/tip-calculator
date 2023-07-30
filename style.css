@@ -70,6 +70,10 @@ a:hover {
 .results {
   border-radius: 20px;
 }
+
+/* Styles de composants */
+
+/* Formulaire */
 .form-control {
   margin-bottom: 1.5rem;
 }
@@ -92,7 +96,6 @@ legend {
   font-size: 1rem;
   text-align: end;
 }
-
 .form-input {
   display: flex;
   align-items: flex-start;
@@ -111,6 +114,8 @@ legend {
 fieldset {
   border: none;
 }
+
+/* Composant Result*/
 .results {
   background-color: var(--very-dark-cyan);
   color: white;
@@ -120,7 +125,7 @@ fieldset {
   color: white;
 }
 
-/* Styles de composants */
+/* Bouton */
 .button {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -270,14 +275,14 @@ input:focus {
 
 @media screen and (min-width: 389px) {
   .main {
-    height: 85vh;
+    /* height: 85vh; */
     padding: 2rem;
   }
 }
 
 @media screen and (min-width: 539px) {
   .main {
-    height: 95vh;
+    /* height: 95vh; */
     width: 90vw;
   }
 }
@@ -321,6 +326,8 @@ input:focus {
     width: 80%;
   }
 }
+
+/*** media queries ***/
 @media screen and (min-width: 840px) {
   .main {
     /* valeur de départ */
@@ -350,4 +357,10 @@ input:focus {
 .radio-checked {
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
+}
+
+@media screen and (min-width: 1850px) {
+  .main {
+    max-width: 900px;
+  }
 }
