@@ -6,9 +6,10 @@ import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 const test = "http://localhost:80/dist/";
 const dev = "http://localhost:5173/";
-
+const local = "http://localhost:1313/splitter/demo";
+const prod = "https://sebnoret.github.io/portfolio/splitter/demo/";
 export default defineConfig({
-  // base: test, // Permet de définir le chemin de base de l'application
+  base: dev, // Permet de définir le chemin de base de l'application
 
   plugins: [
     postcss({
