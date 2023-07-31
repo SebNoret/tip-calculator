@@ -9,7 +9,7 @@ const dev = "http://localhost:5173/";
 const local = "http://localhost:1313/splitter/demo";
 const prod = "https://sebnoret.github.io/portfolio/splitter/demo/";
 export default defineConfig({
-  base: dev, // Permet de définir le chemin de base de l'application
+  base: prod, // Permet de définir le chemin de base de l'application
 
   plugins: [
     postcss({
