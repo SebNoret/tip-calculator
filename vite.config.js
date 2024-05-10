@@ -7,7 +7,7 @@ import autoprefixer from "autoprefixer";
 const test = "http://localhost:80/dist/";
 const dev = "http://localhost:5173/";
 const local = "http://localhost:1313/splitter/demo";
-const prod = "https://sebnoret.github.io/portfolio/splitter/demo/";
+const prod = "https://sebnoret-portfolio.netlify.app/splitter/demo/";
 export default defineConfig({
   base: prod, // Permet de définir le chemin de base de l'application
 
