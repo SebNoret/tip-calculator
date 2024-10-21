@@ -1,13 +1,13 @@
-import { defineConfig } from "vite";
 import legacy from "@vitejs/plugin-legacy";
+import autoprefixer from "autoprefixer";
+import postcss from "postcss";
+import { defineConfig } from "vite";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
-import postcss from "postcss";
-import autoprefixer from "autoprefixer";
 const test = "http://localhost:80/dist/";
 const dev = "http://localhost:5173/";
 const local = "http://localhost:1313/splitter/demo";
-const prod = "https://sebnoret-portfolio.netlify.app/splitter/demo/";
+const prod = "https://snt-portfolio.netlify.app/splitter/demo/";
 export default defineConfig({
   base: prod, // Permet de définir le chemin de base de l'application
 
